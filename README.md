@@ -1,6 +1,12 @@
 # ProjetoPortalMarvel
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.6.
+Projeto Portal Marvel foi desenvolvido utilizando:
+- Angular: 18.2.6
+- Node: 20.17.0
+- NPM: 10.8.2
+- RxJS: 7.8.1
+- Angular Material: 18.2.7
+ 
 
 ## Development server
 

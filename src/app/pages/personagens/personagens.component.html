@@ -1,0 +1,89 @@
+<loading *ngIf="loadResult"></loading>
+<h1>Personagens da Marvel</h1>
+<div class="container-fluid mt-5" style="width: 100% !important;">
+    <div class="row align-items-end" style="width: 100% !important;">
+        <!-- <div class="col-lg-6"></div> -->
+        <div class="col-lg-3 row align-items-end">
+            <input class="form-control mr-sm-2" 
+                #nomePersonagemInput
+                type="text"
+                required name='nomePersonagem' 
+                id='nomePersonagem'
+                placeholder="Procurar Personagem" aria-label="Search" 
+                (keyup)="obterPersonagemPeloNome($event, nomePersonagemInput.value)">
+                
+        </div>
+        <i class="fa fa-search fa-2x" style="cursor: pointer;" aria-hidden="true" (click)="obterPersonagemPeloNome(null, nomePersonagemInput.value)"></i>
+        <div class="col-lg-2"></div>
+    </div>
+</div>
+  
+<div class="container-fluid mt-3" *ngIf="!exibirPersonagemDaBusca">
+    <div class="row">
+        <div
+            class="col-lg-2 mt-3 mb-3"
+            *ngFor="let personagem of todosPersonagens"
+        >
+            <div class="card">
+                <img src="{{personagem.thumbnail.path +'/standard_medium.'+personagem.thumbnail.extension}}" width="100%" class="card-img-top" />
+                <div class="card-footer">
+                    <h5 class="card-title" style="font-size: 0.97em !important;">{{ personagem.name }}</h5>
+                    <button type="button" (click)="buscarQuadrinhosPorPersonagem(personagem)" class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg">Quadrinhos</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid mt-3" *ngIf="exibirPersonagemDaBusca">
+    <div class="row">
+        <div
+            class="col-lg-3 mt-3 mb-3"
+            *ngFor="let personagem of personagemEncontrado"
+        >
+            <div class="card">
+                <img src="{{personagem.thumbnail.path +'/standard_medium.'+personagem.thumbnail.extension}}" width="100%" class="card-img-top" />
+                <div class="card-footer">
+                    <h5 class="card-title">{{ personagem.name }}</h5>
+                    <button type="button" (click)="buscarQuadrinhosPorPersonagem(personagem)" class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target=".bd-example-modal-lg">Quadrinhos</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+  
+
+<!--------[ JANELA MODAL PARA OS QUADRINHOS ]-------->
+
+<div class="modal" *ngIf="exibirQuadrinhos">
+    <div class="modal-content">
+        <div style="background-color: #cc5e61; padding: 10px; border-radius: 10px; margin-bottom: 10px;"> 
+            <h1>
+                <span style="margin: 10px; color: whitesmoke; font-size: 26px;">
+                    {{ nomePersonagem }}
+                </span>
+            </h1>
+            <span style="padding: 20px; font-size: 60px;" class="close" (click)="fecharModal()">&times;</span>
+        </div>
+        <ng-content>
+            <div class="row" style="overflow-y: auto; height: 400px !important;">
+                <div class="col-lg-3 mt-3 mb-3"
+                    *ngFor="let quadrinhos of todosQuadrinhos"
+                    >
+                        <div class="card">
+                            <img src="{{quadrinhos.thumbnail.path +'/standard_medium.'+quadrinhos.thumbnail.extension}}" width="100%" class="card-img-top" />
+                            <div class="card-body">
+                                <h5 class="card-subtitle" style="font-size: 0.87em; padding: 0; margin: 0;">{{ quadrinhos.title }}</h5>
+                            </div>
+                        </div>
+                </div>
+            </div>
+        </ng-content>
+        <div class="modal-footer" style="height: 40px !important;">
+            <button type="button" class="btn btn-secondary" style="margin-top: 20px !important;" data-dismiss="modal" (click)="fecharModal()">Fechar</button>
+        </div>
+    </div>
+    
+</div>
+  
+<!------------------------------------------------->

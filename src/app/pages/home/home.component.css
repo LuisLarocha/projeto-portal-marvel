@@ -1,0 +1,13 @@
+.centerBackgroundImage {
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    align-items: flex-end;
+    text-align: center;
+}
+
+
+img {
+    width: 35%;
+    height: 20%;
+  }

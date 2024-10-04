@@ -1,1 +1,95 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    position: relative;
+    font-family: 'Roboto', sans-serif;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    border-radius: .5rem;
+    background-color: #fff;
+    margin: 1.25rem 0 1.25rem 0;
+    box-shadow: 0 0.25rem .5rem #e6edef;
+
+    .card-head {
+        padding: 1rem 1.5rem;
+        border-bottom: 1px solid #edf1f7;
+        /* font-size: 1rem; */
+        font-size: 0.87em;
+        font-weight: 600;
+    }
+
+    .card-body {
+        padding: 0.4rem 1rem;
+    }
+
+    .card-footer {
+        text-align: center;
+        height: calc(100% - 40px);
+    }
+
+    .card-subtitle {
+        padding-top: 10px;
+        font-size: 0.87em;
+        font-weight: 700;
+        text-align: center;
+        font-size: 18px;
+    }
+    
+
+    .card-text {
+        text-align: justify;
+        padding-left: 0.7rem;
+        padding-right: 0.7rem;
+        padding-top: 0;
+        font-size: 14px;
+    }
+
+    
+}
+
+
+/*----:  SNACKBAR  :---- */ 
+
+.mat-snack-bar-container {
+    text-align: center;
+}
+
+.mat-simple-snackbar {
+    display: inline-block !important;
+}
+
+.msgError {
+    background-color: #FECDD2;
+    color: #73000C;
+}
+
+.msgSuccess {
+    background-color: #C7E5C9;
+    color: #224823;
+}
+
+/* ----------------------- */
+
+::-webkit-scrollbar {
+    width: 20px;               
+  }
+  
+  ::-webkit-scrollbar-track {
+    background: rgb(219, 219, 218);        
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #475962;    
+    border-radius: 5px;      
+    border: 3px solid #263238;  
+  }

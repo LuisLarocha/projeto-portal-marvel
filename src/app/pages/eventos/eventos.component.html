@@ -1,0 +1,62 @@
+<loading *ngIf="loadResult"></loading>
+<h1>Eventos da Marvel</h1>
+<div class="container-fluid mt-5">
+  <div class="row">
+      <!-- <div class="col-lg-6"></div> -->
+      <div class="col-lg-3">
+          <input class="form-control mr-sm-2" 
+              #nomeEventoInput
+              type="text"
+              required name='nomeEvento' 
+              id='nomeEvento'
+              placeholder="Procurar Evento" aria-label="Search" 
+              (keyup)="obterEventoPeloNome($event, nomeEventoInput.value)">
+      </div>
+      <i class="fa fa-search fa-2x" style="cursor: pointer;" aria-hidden="true" (click)="obterEventoPeloNome(null, nomeEventoInput.value)"></i>
+      <div class="col-lg-2"></div>
+  </div>
+</div>
+
+<div class="container-fluid mt-5" *ngIf="!exibirEventoDaBusca">
+  <div class="row">
+    <div class="col-lg-3 mt-4 mb-4"
+      *ngFor="let evento of todosEventos"
+    >
+      <div class="card">
+        <img src="{{evento.thumbnail.path +'/standard_medium.'+evento.thumbnail.extension}}" width="100%" class="card-img-top" />
+        <div class="card-body">
+          <p class="card-subtitle">{{ evento.title}}</p>
+          @if (evento.start && evento.end)
+          {
+            <p style="color: #ED1D24; text-align: center; font-size: 14px; font-weight: 500;">({{ evento.start | date: 'dd/MM/yyyy'}} - {{evento.end | date: 'dd/MM/yyyy'}})</p>
+          }
+        </div>
+        <div class="card-text">
+          <p>{{ evento.description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt-5" *ngIf="exibirEventoDaBusca">
+  <div class="row">
+    <div class="col-lg-3 mt-4 mb-4"
+      *ngFor="let evento of eventoEncontrado"
+    >
+      <div class="card">
+        <img src="{{evento.thumbnail.path +'/standard_medium.'+evento.thumbnail.extension}}" width="100%" class="card-img-top" />
+        <div class="card-body">
+          <p class="card-subtitle">{{ evento.title}}</p>
+          @if (evento.start && evento.end)
+          {
+            <p style="color: #ED1D24; text-align: center; font-size: 14px; font-weight: 500;">({{ evento.start | date: 'dd/MM/yyyy'}} - {{evento.end | date: 'dd/MM/yyyy'}})</p>
+          }
+        </div>
+        <div class="card-text">
+          <p>{{ evento.description}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
