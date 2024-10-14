@@ -1,0 +1,56 @@
+<loading *ngIf="loadResult"></loading>
+<h1>Criadores da Marvel</h1>
+<div class="container-fluid mt-5" *ngIf="!exibirCriadorDaBusca" >
+    <div class="row">
+      <div
+          class="col-lg-3 mt-2 mb-2"
+          *ngFor="let criador of todosCriadores"
+      >
+        <div class="card">
+          <img src="{{criador.thumbnail.path +'/standard_medium.'+criador.thumbnail.extension}}" width="100%" class="card-img-top" />
+          <div class="card-body">
+            <p>Nome: <strong class="card-subtitle">{{ criador.firstName}}</strong></p>
+          </div>
+          <div class="card-text">
+            <p>
+              - Quadrinhos: <span style="font-weight: 600;"> {{ criador.comics.available }} </span>
+              <br>
+              - Eventos: <span style="font-weight: 600;"> {{ criador.comics.available }} </span>
+              <br>
+              - Series: <span style="font-weight: 600;"> {{ criador.series.available}} </span>
+              <br>
+              - Hstórias: <span style="font-weight: 600;"> {{ criador.stories.available}} </span>
+            </p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid mt-5" *ngIf="exibirCriadorDaBusca">
+    <div class="row">
+      <div
+          class="col-lg-3 mt-2 mb-2"
+          *ngFor="let criador of todosCriadores"
+      >
+        <div class="card">
+          <img src="{{criador.thumbnail.path +'/standard_medium.'+criador.thumbnail.extension}}" width="100%" class="card-img-top" />
+          <div class="card-body">
+            <p>Nome: <strong class="card-subtitle">{{ criador.firstName}}</strong></p>
+          </div>
+          <div class="card-text">
+            <p>
+              - Quadrinhos: <span style="font-weight: 600;"> {{ criador.comics.available }} </span>
+              <br>
+              - Eventos: <span style="font-weight: 600;"> {{ criador.comics.available }} </span>
+              <br>
+              - Series: <span style="font-weight: 600;"> {{ criador.series.available}} </span>
+              <br>
+              - Hstórias: <span style="font-weight: 600;"> {{ criador.stories.available}} </span>
+            </p>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+

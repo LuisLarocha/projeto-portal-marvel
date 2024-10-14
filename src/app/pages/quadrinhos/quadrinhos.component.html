@@ -1,0 +1,35 @@
+<loading *ngIf="loadResult"></loading>
+<h1>Quadrinhos da Marvel</h1>
+
+<div class="container-fluid mt-5" *ngIf="!exibirQuadrinhoDaBusca">
+  <div class="row">
+    <div
+        class="col-lg-2 mt-2 mb-2"
+        *ngFor="let quadrinho of todosQuadrinhos"
+    >
+      <div class="card">
+        <img src="{{quadrinho.thumbnail.path +'/standard_medium.'+quadrinho.thumbnail.extension}}" width="100%" class="card-img-top" />
+        <div class="card-body">
+            <h5 class="card-subtitle">{{ quadrinho.title }}</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container-fluid mt-3" *ngIf="exibirQuadrinhoDaBusca">
+  <div class="row">
+      <div
+          class="col-lg-3 mt-3 mb-3"
+          *ngFor="let quadrinho of quadrinhoEncontrado"
+      >
+          <div class="card">
+            <img src="{{quadrinho.thumbnail.path +'/standard_medium.'+quadrinho.thumbnail.extension}}" width="100%" class="card-img-top" />
+            <div class="card-body">
+              <h5 class="card-subtitle">{{ quadrinho.title }}</h5>
+            </div>
+          </div>
+      </div>
+  </div>
+</div>
+
